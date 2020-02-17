@@ -3,23 +3,54 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/core": "^0.5.2",
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/deep-freeze": "^0.1.2",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.7",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/redux-mock-store": "^1.0.2",
+    "cross-env": "^7.0.0",
+    "deep-freeze": "^0.0.1",
+    "emotion-theming": "^10.0.27",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
+    "node-sass": "^4.13.1",
+    "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.1",
+    "redux": "^4.0.5",
+    "redux-act": "^1.7.7",
+    "redux-mock-store": "^1.5.4",
+    "redux-observable": "^1.2.0",
+    "redux-persist": "^6.0.0",
+    "rxjs": "^6.5.4",
     "typescript": "~3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build.ci": "eslint src && cross-env CI=true react-scripts test && cross-env NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "coverage": "yarn test --coverage --watchAll=false --coverageDirectory=coverage",
+    "lint": "eslint --fix src"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +66,40 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "cross-env CI=true yarn test && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/index.tsx",
+      "!src/serviceWorker.ts",
+      "!src/react-app-env.d.ts",
+      "!src/state/store.ts",
+      "!src/state/actions/index.ts",
+      "!src/state/reducers/index.ts",
+      "!src/state/epics/**/index.ts",
+      "!src/state/types/**.ts",
+      "!src/hooks/index.ts",
+      "!src/hooks/locales/**",
+      "!src/router/routes.ts"
+    ],
+    "coverageReporters": [
+      "text",
+      "html"
+    ],
+    "resetMocks": true
   }
 }

@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page renders without crashing 1`] = `
+<TestComponent
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <BrowserRouter
+    keyLength={0}
+  >
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Provider
+        store={
+          Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          }
+        }
+      >
+        <Home>
+          <div
+            className="App"
+          >
+            <header
+              className="App-header"
+            >
+              <img
+                alt="logo"
+                className="App-logo"
+                src="logo.svg"
+              />
+              <p
+                onClick={[Function]}
+              >
+                CLICK_HERE
+              </p>
+              <a
+                className="App-link"
+                href="https://reactjs.org"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                LEARN_REACT
+              </a>
+            </header>
+          </div>
+        </Home>
+      </Provider>
+    </Router>
+  </BrowserRouter>
+</TestComponent>
+`;
