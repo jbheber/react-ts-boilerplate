@@ -119,4 +119,24 @@ export const ACTION_NAME = createAction('ACTION_NAME')
 
 #### `src/state/epics/`
 
-This folder contains RxJs epics that fire when their corresponding action is fired
+This folder contains RxJs epics that are triggered when their corresponding action is fired.  
+Check out [here](https://rxjs-dev.firebaseapp.com/operator-decision-tree) which operations to use.
+
+1. To add new epics export the folder as an array using the `epics/{new folder}/index.ts`
+
+```ts
+import { epic1Epic } from './epic1'
+...
+import { epicNEpic } from './epicN'
+
+export default [epic1Epic, ..., epicNEpic]
+```
+
+2. Import the new epics folder and use the spread operator to add them to the existing ones in `epics/index.ts`
+
+```ts
+import global from './global'
+import newEpics from './newEpics'
+
+export default combineEpics(...[...global, ...newEpics])
+```
