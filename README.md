@@ -140,3 +140,27 @@ import newEpics from './newEpics'
 
 export default combineEpics(...[...global, ...newEpics])
 ```
+
+#### `src/state/reducers/`
+
+This folder contains all the reducers and the configurations of the redux persist.
+
+Structure:
+
+- reducers/
+  - newReducer/
+    - index.ts
+    - newReducer.test.ts
+  - index.ts
+
+Create one folder per reducer. This folder must contain the `index.ts` file that export the reducer and a `{reducerName}.test.ts`  
+In the `index.ts` import the new reducer and add it to the `combineReducers` method.  
+If you want to have the data of this reducer persisted in the local storage then encapsulate the reducer with `persistReducer`.
+
+### `src/styles/`
+
+This folder contains all extensions of the styles framework.
+
+### `src/testing/`
+
+This folder contains testing utilities.
